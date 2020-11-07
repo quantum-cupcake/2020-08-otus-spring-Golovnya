@@ -4,4 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="questionDao" class="ye.golovnya.quiz.dao.impl.QuestionDaoCsvImpl">
+        <constructor-arg name="csvSource" value="quiz-source.csv"/>
+    </bean>
+
+    <bean id="questioningService" class="ye.golovnya.quiz.service.impl.QuestioningServiceConsoleOut">
+        <constructor-arg name="questionDao" ref="questionDao"/>
+    </bean>
+
 </beans>

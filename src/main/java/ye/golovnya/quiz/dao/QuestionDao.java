@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface QuestionDao {
 
-    Optional<Question> findById();
+    Optional<Question> findById(int id);
 
-    List<Question> getAllQuestions();
+    List<Question> findAll();
 }

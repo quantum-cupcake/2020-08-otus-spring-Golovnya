@@ -2,7 +2,7 @@ package ye.golovnya.quiz.service;
 
 public interface QuestioningService {
 
-    void nextQuestion();
+    void promptNextQuestion();
 
-    boolean hasMoreQuestions();
+    void promptAllQuestions();
 }
