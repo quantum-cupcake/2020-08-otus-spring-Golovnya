@@ -18,7 +18,7 @@ public class MultipleChoiceQuestion implements Question {
 
     private final String questionString;
     private final Map<Option, String> optionsMap;
-    private final Option correctOption; //на будущее
+    private final Option correctOption; // TODO это примерная модель данных на будущее, в бою я бы такое не оставил, но уже в ДЗ2 нужно будет проверять ответы
 
     @JsonCreator
     public MultipleChoiceQuestion(@JsonProperty("questionString") String questionString,
