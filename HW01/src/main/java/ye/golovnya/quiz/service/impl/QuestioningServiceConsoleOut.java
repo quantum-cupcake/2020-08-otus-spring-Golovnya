@@ -1,11 +1,13 @@
 package ye.golovnya.quiz.service.impl;
 
 import lombok.Getter;
+import org.springframework.stereotype.Service;
 import ye.golovnya.quiz.dao.QuestionDao;
 import ye.golovnya.quiz.entity.question.Question;
-import ye.golovnya.quiz.exception.NoQuestionsLeftException;
+import ye.golovnya.quiz.exception.NoneLeftException;
 import ye.golovnya.quiz.service.QuestioningService;
 
+@Service(value = "questioningService")
 public class QuestioningServiceConsoleOut implements QuestioningService {
 
     private static final String OUT_OF_QUESTIONS = "Thanks for playing! That's all, folks!";
@@ -23,7 +25,7 @@ public class QuestioningServiceConsoleOut implements QuestioningService {
     @Override
     public void promptNextQuestion() {
         if (currentQuestionIdx < FIRST_QUESTION_IDX) {
-            throw new NoQuestionsLeftException();
+            throw new NoneLeftException();
         }
         var question = questionDao.findById(currentQuestionIdx);
         currentQuestionIdx++;

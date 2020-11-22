@@ -1,7 +1,7 @@
 package ye.golovnya.quiz.exception;
 
-public class NoQuestionsLeftException extends RuntimeException {
-    public NoQuestionsLeftException() {
+public class NoneLeftException extends QuestionException {
+    public NoneLeftException() {
         super("No more questions left to ask in current questionnaire");
     }
 }

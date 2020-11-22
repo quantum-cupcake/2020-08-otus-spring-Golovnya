@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Repository;
 import ye.golovnya.quiz.dao.QuestionDao;
 import ye.golovnya.quiz.entity.question.MultipleChoiceQuestion;
 import ye.golovnya.quiz.entity.question.Question;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Log4j2
+@Repository
 public class QuestionDaoCsvImpl implements QuestionDao {
 
     private final List<Question> questions;
