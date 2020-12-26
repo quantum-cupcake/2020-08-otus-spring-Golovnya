@@ -1,8 +1,10 @@
 package ye.golovnya.quiz.service;
 
+import ye.golovnya.quiz.entity.user.User;
+
 public interface QuestioningService {
 
-    void promptNextQuestion();
+    void promptQuestion(int questionId, User user);
 
-    void promptAllQuestions();
+    void promptAllQuestions(User user);
 }

@@ -10,4 +10,6 @@ public interface QuestionDao {
     Optional<Question> findById(int id);
 
     List<Question> findAll();
+
+    int getQuestionCount();
 }

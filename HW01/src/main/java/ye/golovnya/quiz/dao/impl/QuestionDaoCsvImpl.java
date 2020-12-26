@@ -51,4 +51,9 @@ public class QuestionDaoCsvImpl implements QuestionDao {
     public List<Question> findAll() {
         return questions;
     }
+
+    @Override
+    public int getQuestionCount() {
+        return questions.size();
+    }
 }
