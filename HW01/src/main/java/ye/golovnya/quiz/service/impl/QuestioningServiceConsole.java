@@ -1,6 +1,5 @@
 package ye.golovnya.quiz.service.impl;
 
-import lombok.Getter;
 import org.springframework.stereotype.Service;
 import ye.golovnya.quiz.dao.QuestionDao;
 import ye.golovnya.quiz.entity.question.Option;
@@ -15,12 +14,9 @@ public class QuestioningServiceConsole implements QuestioningService {
 
     private final QuestionDao questionDao;
     private final Scanner scanner;
-    @Getter
-    private final int totalQuestions;
 
     public QuestioningServiceConsole(QuestionDao questionDao) {
         this.questionDao = questionDao;
-        this.totalQuestions = questionDao.getQuestionCount();
         this.scanner = new Scanner(System.in);
     }
 
@@ -40,7 +36,7 @@ public class QuestioningServiceConsole implements QuestioningService {
 
     @Override
     public void promptAllQuestions(User user) {
-        for (int questionId = 0; questionId < totalQuestions; questionId++) {
+        for (int questionId = 0; questionId < questionDao.getQuestionCount(); questionId++) {
             promptQuestion(questionId, user);
         }
     }
