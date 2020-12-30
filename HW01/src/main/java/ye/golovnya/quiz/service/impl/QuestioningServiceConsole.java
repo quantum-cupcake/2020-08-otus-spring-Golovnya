@@ -2,6 +2,7 @@ package ye.golovnya.quiz.service.impl;
 
 import org.springframework.stereotype.Service;
 import ye.golovnya.quiz.dao.QuestionDao;
+import ye.golovnya.quiz.entity.question.MultipleChoiceQuestion;
 import ye.golovnya.quiz.entity.question.Option;
 import ye.golovnya.quiz.entity.user.User;
 import ye.golovnya.quiz.exception.NoneLeftException;
@@ -12,10 +13,10 @@ import java.util.Scanner;
 @Service(value = "questioningService")
 public class QuestioningServiceConsole implements QuestioningService {
 
-    private final QuestionDao questionDao;
+    private final QuestionDao<MultipleChoiceQuestion> questionDao;
     private final Scanner scanner;
 
-    public QuestioningServiceConsole(QuestionDao questionDao) {
+    public QuestioningServiceConsole(QuestionDao<MultipleChoiceQuestion> questionDao) {
         this.questionDao = questionDao;
         this.scanner = new Scanner(System.in);
     }

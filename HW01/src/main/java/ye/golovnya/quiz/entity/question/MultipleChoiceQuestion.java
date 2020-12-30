@@ -2,12 +2,14 @@ package ye.golovnya.quiz.entity.question;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
+@EqualsAndHashCode
 public class MultipleChoiceQuestion implements Question {
 
     private static final int MAX_OPTIONS_COUNT = Option.values().length;
