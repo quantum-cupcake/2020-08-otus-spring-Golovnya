@@ -1,4 +1,4 @@
-package ye.golovnya.otusbookstore.entity;
+package ye.golovnya.otusbookstore.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
