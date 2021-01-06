@@ -25,8 +25,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class QuestioningServiceConsoleTest {
 
-    private static final int QUESTION_COUNT = 5;
-
     @Mock
     private QuestionDao questionDao;
 

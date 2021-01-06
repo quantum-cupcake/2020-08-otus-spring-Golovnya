@@ -12,8 +12,6 @@ import ye.golovnya.quiz.entity.question.MultipleChoiceQuestion;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
 class MultipleChoiceQuestionParserTest {
 

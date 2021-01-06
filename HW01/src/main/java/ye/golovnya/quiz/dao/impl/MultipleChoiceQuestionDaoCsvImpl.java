@@ -14,24 +14,29 @@ import java.util.Optional;
 @Repository
 public class MultipleChoiceQuestionDaoCsvImpl implements QuestionDao<MultipleChoiceQuestion> {
 
-    private final List<MultipleChoiceQuestion> questions;
+    private final CsvQuestionParser<MultipleChoiceQuestion> questionParser;
+    private List<MultipleChoiceQuestion> questions;
 
     public MultipleChoiceQuestionDaoCsvImpl(@Qualifier("questionParser") CsvQuestionParser<MultipleChoiceQuestion> questionParser) {
-        this.questions = questionParser.parseQuestions();
+        this.questionParser = questionParser;
     }
 
     @Override
     public Optional<MultipleChoiceQuestion> findById(int id) {
+        var questions = findAll();
         return questions.size() > id ? Optional.of(questions.get(id)) : Optional.empty();
     }
 
     @Override
     public List<MultipleChoiceQuestion> findAll() {
+        if (questions == null) {
+            questions = questionParser.parseQuestions();
+        }
         return questions;
     }
 
     @Override
     public int getQuestionCount() {
-        return questions.size();
+        return findAll().size();
     }
 }

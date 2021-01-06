@@ -1,14 +1,14 @@
 package ye.golovnya.quiz.entity.user;
 
-import lombok.Data;
+import lombok.Value;
 
-@Data
+@Value
 public class User {
 
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private ScoreCard scoreCard;
+    String firstName;
+    String lastName;
+    String fullName;
+    ScoreCard scoreCard;
 
     public User(String firstName, String lastName) {
         this.firstName = firstName;
