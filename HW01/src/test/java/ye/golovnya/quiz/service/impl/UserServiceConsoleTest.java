@@ -81,7 +81,7 @@ class UserServiceConsoleTest {
         user.getScoreCard().addCorrectResponse(); // 1 из 1
         user.getScoreCard().addCorrectResponse(); // 2 из 2
         user.getScoreCard().addIncorrectResponse(); // 2 из 3
-        String expected = String.format("Quiz results: %nName: %s%nScore: %d out of %d.",
+        String expected = String.format("Quiz results: %nName: %s%nScore: %d out of %d.%n",
                 user.getFullName(), user.getScoreCard().getCorrectResponsesCount(), user.getScoreCard().getQuestionsAskedCount());
 
         userServiceConsole.printScores(user);
