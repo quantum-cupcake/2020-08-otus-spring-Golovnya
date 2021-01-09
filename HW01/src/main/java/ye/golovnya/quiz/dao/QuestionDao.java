@@ -5,9 +5,11 @@ import ye.golovnya.quiz.entity.question.Question;
 import java.util.List;
 import java.util.Optional;
 
-public interface QuestionDao {
+public interface QuestionDao<T extends Question> {
 
-    Optional<Question> findById(int id);
+    Optional<T> findById(int id);
 
-    List<Question> findAll();
+    List<T> findAll();
+
+    int getQuestionCount();
 }
