@@ -1,8 +1,19 @@
 spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
   datasource:
     schema: schema.sql
     data: init.sql
-    initialization-mode: embedded
+    initialization-mode: always
     url: jdbc:h2:mem:testdb
   jpa:
     show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        default_schema: bookstore
+    generate-ddl: false

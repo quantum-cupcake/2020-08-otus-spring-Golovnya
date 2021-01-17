@@ -1,11 +1,10 @@
 package ye.golovnya.otusbookstore.dao;
 
 import ye.golovnya.otusbookstore.entities.Author;
-import ye.golovnya.otusbookstore.entities.Book;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface AuthorDao {
 
-    Author getById(long id);
+    Optional<Author> getById(long id);
 }

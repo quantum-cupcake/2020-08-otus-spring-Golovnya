@@ -1,11 +1,13 @@
 package ye.golovnya.otusbookstore.service.impl;
 
 import org.springframework.stereotype.Service;
-import ye.golovnya.otusbookstore.dao.AuthorDao;
+import org.springframework.transaction.annotation.Transactional;
 import ye.golovnya.otusbookstore.dao.BookDao;
-import ye.golovnya.otusbookstore.dao.GenreDao;
 import ye.golovnya.otusbookstore.entities.Book;
+import ye.golovnya.otusbookstore.exceptions.BookNotFoundException;
+import ye.golovnya.otusbookstore.service.AuthorService;
 import ye.golovnya.otusbookstore.service.BookService;
+import ye.golovnya.otusbookstore.service.GenreService;
 
 import java.util.List;
 
@@ -13,18 +15,18 @@ import java.util.List;
 public class BookServiceJdbc implements BookService {
 
     private final BookDao bookDao;
-    private final GenreDao genreDao;
-    private final AuthorDao authorDao;
+    private final GenreService genreService;
+    private final AuthorService authorService;
 
-    public BookServiceJdbc(BookDao bookDao, GenreDao genreDao, AuthorDao authorDao) {
+    public BookServiceJdbc(BookDao bookDao, GenreService genreService, AuthorService authorService) {
         this.bookDao = bookDao;
-        this.genreDao = genreDao;
-        this.authorDao = authorDao;
+        this.genreService = genreService;
+        this.authorService = authorService;
     }
 
     @Override
     public Book getBook(Long id) {
-        return bookDao.getById(id);
+        return getBookByIdOrThrow(id);
     }
 
     @Override
@@ -38,18 +40,28 @@ public class BookServiceJdbc implements BookService {
     }
 
     @Override
+    @Transactional
     public void createBook(String title, Long genreId, Long authorId) {
         var book = buildBook(title, genreId, authorId);
         bookDao.create(book);
     }
 
     @Override
+    @Transactional
     public void updateBook(Long id, String title, Long authorId, Long genreId) {
-        var book = buildBook(title, genreId, authorId);
-        bookDao.update(id, book);
+        var book = getBookByIdOrThrow(id);
+        book.setTitle(title);
+        if (!book.getAuthor().getId().equals(authorId)) {
+            book.setAuthor(authorService.getAuthor(authorId));
+        }
+        if (!book.getGenre().getId().equals(genreId)) {
+            book.setGenre(genreService.getGenre(genreId));
+        }
+        bookDao.update(book);
     }
 
     @Override
+    @Transactional
     public void deleteBook(Long id) {
         bookDao.deleteById(id);
     }
@@ -57,8 +69,14 @@ public class BookServiceJdbc implements BookService {
     private Book buildBook(String title, Long genreId, Long authorId) {
         var book = new Book();
         book.setTitle(title);
-        book.setGenre(genreDao.getById(genreId));
-        book.setAuthor(authorDao.getById(authorId));
+        book.setGenre(genreService.getGenre(genreId));
+        book.setAuthor(authorService.getAuthor(authorId));
         return book;
+    }
+
+    private Book getBookByIdOrThrow(Long id) {
+        return bookDao.getById(id).orElseThrow(
+                () -> new BookNotFoundException(id)
+        );
     }
 }

@@ -40,13 +40,13 @@ public class BookCrudCommands {
         return booksToString(books);
     }
 
-    @ShellMethod(value = "Update book", key = {"u", "update"})
+    @ShellMethod(value = "Update book", key = {"ub", "updateBook"})
     public String updateBook(Long bookId, String title, Long authorId, Long genreId) {
         bookService.updateBook(bookId, title, authorId, genreId);
         return String.format("Обновлены данные книги %d \"%s\"!", bookId, title);
     }
 
-    @ShellMethod(value = "Delete by id", key = {"d", "delete"})
+    @ShellMethod(value = "Delete by id", key = {"db", "deleteBook"})
     public String deleteBook(@ShellOption Long bookId) {
         Book book = bookService.getBook(bookId);
         bookService.deleteBook(bookId);

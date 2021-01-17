@@ -9,8 +9,8 @@ public class OtusBookstoreApplication {
 
     public static void main(String[] args) {
         var c = SpringApplication.run(OtusBookstoreApplication.class, args);
-        BookDao bookDaoJdbc = c.getBean("bookDaoJdbc", BookDao.class);
+        BookDao bookDaoJdbc = c.getBean("bookJpaRepository", BookDao.class);
         System.out.println(bookDaoJdbc.count());
-        System.out.println(bookDaoJdbc.getById(1));
+        System.out.println(bookDaoJdbc.getById(1L));
     }
 }

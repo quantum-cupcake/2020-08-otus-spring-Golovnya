@@ -3,6 +3,7 @@ package ye.golovnya.otusbookstore.dao;
 import ye.golovnya.otusbookstore.entities.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookDao {
 
@@ -10,9 +11,9 @@ public interface BookDao {
 
     void create(Book book);
 
-    void update(long id, Book changedBook);
+    void update(Book changedBook);
 
-    Book getById(long id);
+    Optional<Book> getById(Long id);
 
     List<Book> getByTitle(String title);
 
