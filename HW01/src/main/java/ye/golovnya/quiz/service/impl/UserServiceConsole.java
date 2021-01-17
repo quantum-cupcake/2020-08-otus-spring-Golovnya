@@ -33,7 +33,7 @@ public class UserServiceConsole implements UserService {
     @Override
     public void printScores(User user) {
         ScoreCard scoreCard = user.getScoreCard();
-        System.out.printf("Quiz results: %nName: %s%nScore: %d out of %d.",
+        System.out.printf("Quiz results: %nName: %s%nScore: %d out of %d.%n",
                 user.getFullName(), scoreCard.getCorrectResponsesCount(), scoreCard.getQuestionsAskedCount());
     }
 
