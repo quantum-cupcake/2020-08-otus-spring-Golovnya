@@ -29,7 +29,7 @@ public class Book {
     @Id
     @ToString.Include
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_id")
-    @SequenceGenerator(name = "book_id", sequenceName = "bookstore.book_id_seq", allocationSize = 50, initialValue = 2)
+    @SequenceGenerator(name = "book_id", sequenceName = "bookstore.book_id_seq", allocationSize = 50)
     private Long id;
 
     @ToString.Include

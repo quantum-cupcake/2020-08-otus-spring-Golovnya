@@ -14,7 +14,7 @@ CREATE TABLE bookstore.genre
     name text NOT NULL
 );
 
-CREATE SEQUENCE bookstore.genre_id_seq START WITH 1 INCREMENT BY 1 NOCYCLE;
+CREATE SEQUENCE bookstore.genre_id_seq START WITH 1 INCREMENT BY 50 NOCYCLE;
 
 CREATE TABLE bookstore.book
 (
@@ -24,7 +24,7 @@ CREATE TABLE bookstore.book
     author_id BIGINT REFERENCES author(id)
 );
 
-CREATE SEQUENCE bookstore.book_id_seq START WITH 1 INCREMENT BY 1 NOCYCLE;
+CREATE SEQUENCE bookstore.book_id_seq START WITH 1 INCREMENT BY 50 NOCYCLE;
 
 CREATE TABLE bookstore.comment
 (
@@ -33,4 +33,4 @@ CREATE TABLE bookstore.comment
     book_id BIGINT REFERENCES book(id)
 );
 
-CREATE SEQUENCE bookstore.comment_id_seq START WITH 1 INCREMENT BY 1 NOCYCLE;
+CREATE SEQUENCE bookstore.comment_id_seq START WITH 1 INCREMENT BY 50 NOCYCLE;

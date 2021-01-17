@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface BookDao {
 
-    int count();
+    long count();
 
     void create(Book book);
 

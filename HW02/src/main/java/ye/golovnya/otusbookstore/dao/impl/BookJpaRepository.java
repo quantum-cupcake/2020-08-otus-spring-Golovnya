@@ -26,8 +26,8 @@ public class BookJpaRepository implements BookDao {
     }
 
     @Override
-    public int count() {
-        TypedQuery<Integer> countQuery = entityManager.createQuery("SELECT count(b) from Book b", Integer.class);
+    public long count() {
+        TypedQuery<Long> countQuery = entityManager.createQuery("SELECT count(b) from Book b", Long.class);
 
         return countQuery.getSingleResult();
     }

@@ -23,7 +23,7 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_id")
-    @SequenceGenerator(name = "comment_id", sequenceName = "bookstore.comment_id_seq", allocationSize = 50, initialValue = 1)
+    @SequenceGenerator(name = "comment_id", sequenceName = "bookstore.comment_id_seq", allocationSize = 50)
     @ToString.Include
     private Long id;
 
